@@ -19,7 +19,7 @@ class AppointmentService{
 
     static async searchAppointment(patientId, doctorId) {
         try {
-            const appointment = prismaClient.appointment.findFirst({
+            const appointment = prismaClient.appointment.findMany({
                 where: {
                     patientId,
                     OR: {doctorId}

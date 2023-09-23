@@ -16,6 +16,19 @@ class DoctorService{
             throw error;
         }
     }
+    static async getDoctor(doctorId){
+        try {
+            const createDoctor = prismaClient.doctor.findFirst({
+                where: {id: doctorId},
+                include: {
+                    appointment: true
+                }
+            });
+            return createDoctor;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = DoctorService;
