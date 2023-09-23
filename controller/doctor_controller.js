@@ -10,7 +10,16 @@ register = async(req, res)=>{
         throw error;
     }
 }
+doctorLogin = async(req,res)=>{
+    try {
+        const {email, password} = req.body;
+        const doctor = await doctorService.findDoctor(email);
 
+        res.json({status:true,success:"User registered successfully"});
+    } catch (error) {
+        throw error;
+    }
+}
 getDoctor = async(req, res)=>{
     try {
         const {doctorId} = req.params;
@@ -23,5 +32,5 @@ getDoctor = async(req, res)=>{
 }
 
 module.exports = {
-    register, getDoctor
+    register, getDoctor, doctorLogin
 }

@@ -15,7 +15,19 @@ class PatientService{
             throw error;
         }
     }
-
+    static async getPatient(patientId){
+        try {
+            const createpatient = prismaClient.patient.findFirst({
+                where: {id: patientId},
+                include: {
+                    appointment: true
+                }
+            });
+            return createpatient;
+        } catch (error) {
+            throw error;
+        }
+    }
 
     static async findPatient(email) {
         try {

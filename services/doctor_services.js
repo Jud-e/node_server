@@ -16,6 +16,18 @@ class DoctorService{
             throw error;
         }
     }
+
+    static async findDoctor(email) {
+        try {
+            const doctor = prismaClient.doctor.findFirst({
+                where: {email}
+            });
+            return doctor;
+        } catch (error) {
+            throw error;
+        }
+    }
+    
     static async getDoctor(doctorId){
         try {
             const createDoctor = prismaClient.doctor.findFirst({
