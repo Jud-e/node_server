@@ -1,0 +1,46 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Doctor{
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  email   String  @unique
+  name    String
+  password  String
+  phoneNumber  String?
+  specification  String
+  affilation String?
+  address Address?
+  appointment Appointment[]
+}
+
+model Patient{
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  email   String  @unique
+  password  String
+  name    String
+  phoneNumber  String?
+  appointment Appointment[]
+}
+
+model Appointment{
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  doctor   Doctor  @relation(fields: [doctorId], references: [id])
+  doctorId String @db.ObjectId 
+  patient   Patient  @relation(fields: [patientId], references: [id])
+  patientId String @db.ObjectId 
+  reason    String
+}
+
+// Address is an embedded document
+type Address {
+  street String
+  city   String
+  state  String
+  zip    String
+}
