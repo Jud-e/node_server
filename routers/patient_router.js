@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const patientController = require('../controller/patient_controller')
 
-router.get('/patient/registration',patientController.register);
+router.post('/register',patientController.register);
+router.post('/login',patientController.patientLogin);
 
 module.exports = router;

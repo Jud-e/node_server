@@ -15,6 +15,18 @@ class PatientService{
             throw error;
         }
     }
+
+
+    static async findPatient(email) {
+        try {
+            const patient = prismaClient.patient.findFirst({
+                where: {email}
+            });
+            return patient;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = PatientService;

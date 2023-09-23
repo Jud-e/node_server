@@ -35,6 +35,7 @@ model Appointment{
   patient   Patient  @relation(fields: [patientId], references: [id])
   patientId String @db.ObjectId 
   reason    String
+  date DateTime
 }
 
 // Address is an embedded document

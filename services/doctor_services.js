@@ -7,7 +7,7 @@ class DoctorService{
                 data: {
                     email:email,
                     password:password,
-                    name:name,
+                    name: name,
                     specification:specification
                 }
             });
