@@ -36,6 +36,7 @@ model Appointment{
   patientId String @db.ObjectId 
   reason    String
   date DateTime
+  status  String
 }
 
 // Address is an embedded document

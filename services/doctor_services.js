@@ -41,6 +41,24 @@ class DoctorService{
             throw error;
         }
     }
+
+    static async searchDoctor(doctorname){
+        try {
+            const findDoctor = prismaClient.doctor.findMany(
+                {
+                    where: {
+                        name: doctorname
+                    },
+                    include: {
+                        appointment: true
+                    }
+                }
+            );
+            return findDoctor;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = DoctorService;

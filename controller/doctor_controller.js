@@ -30,7 +30,16 @@ getDoctor = async(req, res)=>{
         throw error;
     }
 }
+searchDoctor = async(req, res)=>{
+    try {
+        const {doctorname} = req.params;
+        const successRes = await DoctorService.searchDoctor(doctorname);
+        res.json({status:true,success:"Doctors found successfully", data: successRes});
+}
+catch (error) {
+    throw error;
+}}
 
 module.exports = {
-    register, getDoctor, doctorLogin
+    register, getDoctor, doctorLogin, searchDoctor
 }
