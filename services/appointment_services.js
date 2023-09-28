@@ -1,6 +1,7 @@
 const prismaClient = require("../config/db");
 
 class AppointmentService{
+    // create
     static async registerAppointment(doctorId,patientId, reason, date){
         try {
             const createAppointment = prismaClient.appointment.create({
@@ -16,16 +17,41 @@ class AppointmentService{
             throw error;
         }
     }
-
+//read appointments
     static async searchAppointment(patientId, doctorId) {
         try {
-            const appointment = prismaClient.appointment.findMany({
+            const searchAppointment = prismaClient.appointment.findMany({
                 where: {
                     patientId,
                     OR: {doctorId}
                 }
             });
-            return appointment;
+            return searchAppointment;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async findAppointment(appointmentId) {
+        try {
+            const findAppointment = prismaClient.appointment.findOne({
+                where: {
+                    id: appointmentId
+                },
+                include: {
+                    doctorId: true,
+                    patientId: true
+                }
+            });
+            return findAppointment;
+        } catch (error) {
+            throw error;
+        }
+    }
+//delete appointments
+    static async deleteAppointment(){
+        try {
+            
         } catch (error) {
             throw error;
         }

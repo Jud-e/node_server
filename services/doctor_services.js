@@ -59,6 +59,22 @@ class DoctorService{
             throw error;
         }
     }
+
+    static async deleteDoctor(doctorId){
+        try {
+            
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    static async updateDoctor(doctorId){
+        try {
+            
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = DoctorService;
