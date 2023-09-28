@@ -39,7 +39,18 @@ searchDoctor = async(req, res)=>{
 catch (error) {
     throw error;
 }}
-
+deleteDoctor = async(req, res)=>{
+    try {
+        const {doctorId} = req.params;
+        if (doctorId == null) {
+            res.status(500).json({message: "No patients found!"})
+        }
+        const successRes = await PatientService.deleteDoctor(doctorId);
+        res.json({status:true,success:"Patient deleted successfully", data: successRes});
+}
+catch (error) {
+    throw error;
+}}
 module.exports = {
-    register, getDoctor, doctorLogin, searchDoctor
+    register, getDoctor, doctorLogin, searchDoctor,deleteDoctor
 }

@@ -35,7 +35,7 @@ deletePatient = async(req, res)=>{
     try {
         const {patientId} = req.params;
         if (patientId == null) {
-            res.status(500).json({message: "No appointments found!"})
+            res.status(500).json({message: "No patients found!"})
         }
         const successRes = await PatientService.deletePatient(patientId);
         res.json({status:true,success:"Patient deleted successfully", data: successRes});
