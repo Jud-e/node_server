@@ -73,9 +73,20 @@ class DoctorService{
         }
     }
 
-    static async updateDoctor(doctorId){
+    static async updateDoctor(doctorId,password,affilation,address,phoneNumber){
         try {
-            
+            const updateDoctor = prismaClient.doctor.update({
+                where: {
+                    id: doctorId
+                },
+                data: {
+                    password: password,
+                    affilation: affilation,
+                    address: address,
+                    phoneNumber: phoneNumber
+                }
+            });
+            return updateDoctor;
         } catch (error) {
             throw error;
         }

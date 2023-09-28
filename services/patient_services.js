@@ -52,6 +52,23 @@ class PatientService{
             throw error;
         }
     }
+
+    static async updatePatient(patientId,password,phoneNumber){
+        try {
+            const updatePatient = prismaClient.patient.update({
+                where: {
+                    id: patientId
+                },
+                data: {
+                    password: password,
+                    phoneNumber: phoneNumber
+                }
+            });
+            return updatePatient;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = PatientService;

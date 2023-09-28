@@ -72,7 +72,6 @@ class AppointmentService{
                 data: {
                     status: status
                 }
-                
             });
             return updateAppointment;
         } catch (error) {
