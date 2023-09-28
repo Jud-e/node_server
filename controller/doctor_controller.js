@@ -52,5 +52,9 @@ catch (error) {
     throw error;
 }}
 module.exports = {
-    register, getDoctor, doctorLogin, searchDoctor,deleteDoctor
+    register, 
+    getDoctor,
+    doctorLogin, 
+    searchDoctor,
+    deleteDoctor
 }
