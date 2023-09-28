@@ -28,8 +28,7 @@ getDoctor = async(req, res)=>{
         res.json({status:true,success:"Doctor registered successfully", data: successRes});
     } catch (error) {
         throw error;
-    }
-}
+    }}
 searchDoctor = async(req, res)=>{
     try {
         const {doctorname} = req.params;
@@ -39,6 +38,20 @@ searchDoctor = async(req, res)=>{
 catch (error) {
     throw error;
 }}
+
+updateDoctor = async(req, res)=>{
+    try {
+        const {doctorId, password,affilation,address,phoneNumber} = req.body;
+        if (doctorId == null) {
+            res.status(500).json({message: "No patients found!"})
+        }
+        const successRes = await DoctorService.updateDoctor(password,affilation,address,phoneNumber,doctorId);
+        res.json({status:true,success:"Doctors updated successfully", data: successRes});
+}
+catch (error) {
+    throw error;
+}}
+
 deleteDoctor = async(req, res)=>{
     try {
         const {doctorId} = req.params;

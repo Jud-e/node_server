@@ -25,12 +25,26 @@ getPatient = async(req, res)=>{
     try {
         const {patientId} = req.params;
         const successRes = await PatientService.getPatient(patientId);
-
         res.json({status:true,success:"Patient registered successfully", data: successRes});
     } catch (error) {
         throw error;
     }
 }
+
+updatePatient = async(req, res)=>{
+    try {
+        const {patientId, password,phoneNumber} = req.body;
+        if (patientId == null) {
+            res.status(500).json({message: "No patients found!"})
+        }
+        const successRes = await PatientService.updatePatient(password,phoneNumber,patientId);
+        res.json({status:true,success:"Patient updated successfully", data: successRes});
+}
+catch (error) {
+    throw error;
+}
+}
+
 deletePatient = async(req, res)=>{
     try {
         const {patientId} = req.params;
