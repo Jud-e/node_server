@@ -39,6 +39,19 @@ class PatientService{
             throw error;
         }
     }
+    
+    static async deletePatient(patientId){
+        try {
+            const deletePatient = prismaClient.patient.delete({
+                where: {
+                    id: patientId
+                }
+            });
+            return deletePatient;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = PatientService;

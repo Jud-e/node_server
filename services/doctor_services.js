@@ -62,7 +62,12 @@ class DoctorService{
 
     static async deleteDoctor(doctorId){
         try {
-            
+            const deleteDoctor = prismaClient.doctor.delete({
+                where: {
+                    id: doctorId
+                }
+            });
+            return deleteDoctor;
         } catch (error) {
             throw error;
         }

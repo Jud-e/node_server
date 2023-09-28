@@ -31,6 +31,18 @@ getPatient = async(req, res)=>{
         throw error;
     }
 }
+deletePatient = async(req, res)=>{
+    try {
+        const {patientId} = req.params;
+        if (patientId == null) {
+            res.status(500).json({message: "No appointments found!"})
+        }
+        const successRes = await PatientService.deletePatient(patientId);
+        res.json({status:true,success:"Patient deleted successfully", data: successRes});
+}
+catch (error) {
+    throw error;
+}}
 module.exports = {
-    register, getPatient, patientLogin
+    register, getPatient, patientLogin, deletePatient
 }

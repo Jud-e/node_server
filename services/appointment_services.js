@@ -49,9 +49,32 @@ class AppointmentService{
         }
     }
 //delete appointments
-    static async deleteAppointment(){
+    static async deleteAppointment(appointmentId){
         try {
-            
+            const deleteAppointment = prismaClient.appointment.delete({
+                where: {
+                    id: appointmentId
+                }
+            });
+            return deleteAppointment;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    //update appointments
+    static async updateAppointment(status, appointmentId){
+        try {
+            const updateAppointment = prismaClient.appointment.update({
+                where: {
+                    id: appointmentId
+                },
+                data: {
+                    status: status
+                }
+                
+            });
+            return updateAppointment;
         } catch (error) {
             throw error;
         }

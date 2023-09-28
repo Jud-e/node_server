@@ -36,7 +36,13 @@ model Appointment{
   patientId String @db.ObjectId 
   reason    String
   date DateTime
-  status  String
+  status  AppointmentStatus @default(pending)
+}
+
+enum AppointmentStatus {
+  pending 
+  accepted
+  rejected
 }
 
 // Address is an embedded document

@@ -32,3 +32,27 @@ exports.searchAppointment = async(req,res)=>{
         throw error;
     }
 }
+exports.updateAppointment = async(req,res)=>{
+    try {
+        const {appointmentId, status} = req.body;
+        if (appointmentId == null) {
+            res.status(500).json({message: "No appointments found!"})
+        }
+        const successRes = await AppointmentService.updateAppointment(status, appointmentId);
+        res.json({status:true,success:"Appointment registered successfully", data: successRes});
+    } catch (error) {
+        throw error;
+    }
+}
+exports.deleteAppointment = async(req,res)=>{
+    try {
+        const {appointmentId} = req.params;
+        if (appointmentId == null) {
+            res.status(500).json({message: "No appointments found!"})
+        }
+        const successRes = await AppointmentService.deleteAppointment(appointmentId);
+        res.json({status:true,success:"Appointment deleted successfully", data: successRes});
+    } catch (error) {
+        throw error;
+    }
+}
