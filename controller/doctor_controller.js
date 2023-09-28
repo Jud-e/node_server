@@ -69,5 +69,6 @@ module.exports = {
     getDoctor,
     doctorLogin, 
     searchDoctor,
+    updateDoctor,
     deleteDoctor
 }

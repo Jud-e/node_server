@@ -42,8 +42,7 @@ updatePatient = async(req, res)=>{
 }
 catch (error) {
     throw error;
-}
-}
+}}
 
 deletePatient = async(req, res)=>{
     try {
@@ -58,5 +57,5 @@ catch (error) {
     throw error;
 }}
 module.exports = {
-    register, getPatient, patientLogin, deletePatient
+    register, getPatient, patientLogin, deletePatient, updatePatient
 }
